@@ -69,7 +69,6 @@ for i from 0 to m[1]-1 do
             T:=T+Phi(C,in_data,[i,j])/z^(i+1)/w^(j+1)*ChPol(c,[i,j]);
    od;
 od;
-i:=1000;
 for i from 1 to m[1]+m[2] do
     j:=i;
     repl:=z^(1-signum(C[i,1][1]))*w^(1-signum(C[i,1][2]));
@@ -83,73 +82,3 @@ od;
 T:=T/ChPol(c,[-1,-1]);
 T:=simplify(T);
 end proc:
-c := matrix([[1, -1], [-1, -1], [0, 1]]);
-
-m := array([rowdim(c)-1, coldim(c)-1]);
-
-in_data := matrix([[1, 0], [0, 1]]);
-
-#перечислим коэффиценты производящих функций
-#первый столбец задает направление, второй - коэффициенты производящих функций
-C:=matrix([[[(0,1)],[(-1, -1, 1) ]],
-           [[(1,0)],[( 0,  1)    ]],
-           [[(2,0)],[( 0,  0, 1) ]]
-          ]); 
-
-C:=[Typesetting:-mtable(Typesetting:-mtr(Typesetting:-mtd([0,1], 
-
-  rowalign = "", columnalign = "", groupalign = "", 
-
-  rowspan = "1", columnspan = "1"), Typesetting:-mtd(
-
-  [uminus01,uminus01,1], rowalign = "", columnalign = "", 
-
-  groupalign = "", rowspan = "1", columnspan = "1"), 
-
-  rowalign = "", columnalign = "", groupalign = ""), 
-
-  Typesetting:-mtr(Typesetting:-mtd([1,0], rowalign = "", 
-
-  columnalign = "", groupalign = "", rowspan = "1", 
-
-  columnspan = "1"), Typesetting:-mtd([0,1], rowalign = "", 
-
-  columnalign = "", groupalign = "", rowspan = "1", 
-
-  columnspan = "1"), rowalign = "", columnalign = "", 
-
-  groupalign = ""), Typesetting:-mtr(Typesetting:-mtd([2,0], 
-
-  rowalign = "", columnalign = "", groupalign = "", 
-
-  rowspan = "1", columnspan = "1"), Typesetting:-mtd([0,0,1], 
-
-  rowalign = "", columnalign = "", groupalign = "", 
-
-  rowspan = "1", columnspan = "1"), rowalign = "", 
-
-  columnalign = "", groupalign = ""), align = "axis", 
-
-  rowalign = "baseline", columnalign = "center", 
-
-  groupalign = "{left}", alignmentscope = "true", 
-
-  columnwidth = "auto", width = "auto", rowspacing = "1.0ex", 
-
-  columnspacing = "0.8em", rowlines = "none", 
-
-  columnlines = "none", frame = "none", 
-
-  framespacing = "0.4em 0.5ex", equalrows = "false", 
-
-  equalcolumns = "false", displaystyle = "false", side = "right", 
-
-  minlabelspacing = "0.8em")]
-
-GenF(C,in_data);
-                             z - 1         
-                     ----------------------
-                        2                  
-                     w z  - w z - w - z + 1
-
-
